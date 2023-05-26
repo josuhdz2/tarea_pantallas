@@ -59,8 +59,22 @@ class _LoginContentState extends State<LoginContent>
         children:
         const [
           Texts(),
+          SizedBox
+          (
+            height: 20
+          ),
           Inputs(),
-          Buttons()
+          SizedBox
+          (
+            height: 20
+          ),
+          Buttons(),
+          SizedBox
+          (
+            height: 30
+          ),
+          Footer()
+          //
         ],
       ),
     );
@@ -113,6 +127,7 @@ class Inputs extends StatefulWidget
 }
 class _InputsState extends State<Inputs>
 {
+  bool visible=true;
   @override
   Widget build(BuildContext context)
   {
@@ -124,19 +139,96 @@ class _InputsState extends State<Inputs>
         (
           cursorColor: Colors.white,
           keyboardType: TextInputType.emailAddress,
+          style: const TextStyle
+          (
+            color:Colors.white
+          ),
           decoration: const InputDecoration
           (
-            border:OutlineInputBorder(),
+            focusedBorder: OutlineInputBorder
+            (
+              borderSide: BorderSide
+              (
+                color: Colors.white,
+                width: 2
+              )
+            ),
+            enabledBorder: OutlineInputBorder
+            (
+              borderSide: BorderSide
+              (
+                width: 2,
+                color: Color.fromRGBO(87, 0, 159, 1)
+              )
+            ),
+            hintText: "Email",
             hintStyle: TextStyle
             (
               color: Colors.white
             ),
-            hintText: "Email",
             prefixIcon: Icon
             (
               Icons.person,
               color: Colors.white,
               opticalSize: 15
+            )
+          )
+        ),
+        const SizedBox
+        (
+          height: 15
+        ),
+        TextFormField
+        (
+          obscureText: visible,//controla la visivilidad del 
+          cursorColor: Colors.white,
+          style: const TextStyle
+          (
+            color:Colors.white
+          ),
+          decoration: InputDecoration
+          (
+            focusedBorder: const OutlineInputBorder
+            (
+              borderSide: BorderSide
+              (
+                color: Colors.white,
+                width: 2
+              )
+            ),
+            enabledBorder: const OutlineInputBorder
+            (
+              borderSide: BorderSide
+              (
+                width: 2,
+                color: Color.fromRGBO(87, 0, 159, 1)
+              )
+            ),
+            hintText: "Password",
+            hintStyle: const TextStyle
+            (
+              color:Colors.white
+            ),
+            prefixIcon: const Icon
+            (
+              Icons.key,
+              color: Colors.white,
+              opticalSize: 15,
+            ),
+            suffixIcon: IconButton
+            (
+              icon: Icon
+              (
+                visible ? Icons.visibility_off : Icons.visibility,
+                color: Colors.white,
+              ),
+              onPressed: ()
+              {
+                setState(()
+                {
+                  visible=visible==true?false:true;
+                });
+              }
             )
           )
         )
@@ -171,9 +263,9 @@ class Buttons extends StatelessWidget
             )
           ),
         ),
-        SizedBox
+        const SizedBox
         (
-          height: 20
+          height: 15
         ),
         SizedBox
         (
@@ -186,10 +278,44 @@ class Buttons extends StatelessWidget
             (
               backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(198, 34, 239, 1))
             ),
-            child: Text
+            child: const Text
             (
               "Acceder con Google"
             ),
+          ),
+        )
+      ],
+    );
+  }
+}
+class Footer extends StatelessWidget
+{
+  const Footer({ Key? key }) : super(key: key);
+  @override
+  Widget build(BuildContext context)
+  {
+    return Row
+    (
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:
+      [
+        SizedBox
+        (
+          height: 40,
+          child: Image.asset('assets/logo.png')
+        ),
+        const SizedBox
+        (
+          width: 10,
+        ),
+        const Text
+        (
+          "LET'S PLAY!",
+          style: TextStyle
+          (
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            color: Colors.black
           ),
         )
       ],

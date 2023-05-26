@@ -38,6 +38,15 @@ class Content extends StatelessWidget
         crossAxisAlignment: CrossAxisAlignment.center,
         children:
         [
+          SizedBox
+          (
+            height: 100,
+            child: Image.asset('assets/logo.png')
+          ),
+          const SizedBox
+          (
+            height: 20
+          ),
           const Text
           (
             "Bienvenido a GameZone",
